@@ -1,13 +1,13 @@
 <template>
 	<nav class="nav-fixed">
 		<div class="logo">
-			<a href="#" class="navbar-brand">BankIndra</a>
+			<router-link to="/" class="navbar-brand">BankIndra</router-link>
 		</div>
 		<ul>
 			<li><a href="">Aspirante</a></li>
 			<li><a href="">Entrevistador</a></li>
 			<li><a href="">Vacantes</a></li>
-			<li><a href="#" data-bs-toggle="modal" data-bs-target="#modalAuth">Iniciar sesión</a>&nbsp; / &nbsp; </li>
+			<router-link to="/login"><a>Iniciar sesión</a>&nbsp; / &nbsp; </router-link>
 			<li><a href="#">Registrarse</a></li>
 		</ul>
 	</nav>

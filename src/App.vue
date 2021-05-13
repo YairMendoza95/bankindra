@@ -1,20 +1,19 @@
 <template>
 	<div>
 		<navbar></navbar>
-		<login></login>
+		<router-view></router-view>
+		<footer-page></footer-page>
 	</div>
 </template>
 
 <script>
 import Navbar from './layout/Navbar.vue';
-import Presentation from './Presentation.vue';
-import Login from './auth/Login';	
+import FooterPage from './layout/FooterPage.vue'
 
 export default {
 	components:{
 		Navbar,
-		Presentation,
-		Login,
+		FooterPage
 	}
 }
 </script>

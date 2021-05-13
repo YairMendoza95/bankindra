@@ -1,9 +1,12 @@
 package com.indra.bbva.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,16 +22,16 @@ public class AuthController {
 	UserService userService;
 
 	@GetMapping("/users")
-	public String getUsers() {
-		return userService.getAllUsers().toString();
+	public List<UserBean> getUsers() {
+		return userService.getAllUsers();
 	}
 
 	@PostMapping("/login")
-	public String login(UserBean user) {
+	public UserBean login(@RequestBody UserBean user) {
 		UserBean userDB = userService.getUserByUsername(user);
-		String msg = "{\"message\": \"";
-		if (userDB.getPassword().equals(user).getPassword()) {
-
+		if (!userDB.getPassword().equals(user.getPassword())) {
+			return null;
 		}
+		return userDB;
 	}
 }

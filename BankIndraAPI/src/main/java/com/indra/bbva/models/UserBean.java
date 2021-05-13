@@ -66,6 +66,6 @@ public class UserBean {
 	@Override
 	public String toString() {
 		return "\"user\": {\"username\": \"" + username + "\", \"password\": \"" + password + "\", \"active\": \""
-				+ active + "\", \"role\": \"" + role + "\"}";
+				+ active + "\", \"role\": \"" + role.getRole() + "\"}";
 	}
 }
