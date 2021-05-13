@@ -14,6 +14,14 @@ export default {
 	components:{
 		Navbar,
 		FooterPage
+	},
+	data(){
+		return {
+			page:''
+		}
+	},
+	mounted(){
+
 	}
 }
 </script>

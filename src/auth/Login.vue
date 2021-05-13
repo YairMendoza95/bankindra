@@ -3,21 +3,21 @@
 		<div class="col-4">
 			<section class="container">
 				<h2 class="text-center">Inicio de sesión</h2>
-				<form action="" class="form">
+				<div>
 					<div class="form-group-custom field">
-						<input type="text" id="username" name="username" placeholder=" " class="form-control-custom">
+						<input type="text" id="username" name="username" placeholder=" " class="form-control-custom" v-model="user.username">
 						<label for="username" class="form-label">Nombre de usuario</label>
 					</div>
 					<div class="form-group-custom field">
-						<input type="password" id="password" name="password" class="form-control-custom" placeholder=" ">
+						<input type="password" id="password" name="password" class="form-control-custom" placeholder=" " v-model="user.password">
 						<label for="password" class="form-label">Contraseña</label>
 					</div>
 					<div class="form-group">
 						<div class="row justify-content-center">
-							<button class="btn col-4"><i class="fas fa-sign-in-alt"></i> Enviar</button>
+							<button class="btn col-4" type="submit" @click="login"><i class="fas fa-sign-in-alt"></i> Enviar</button>
 						</div>
 					</div>
-				</form>
+				</div>
 			</section>
 		</div>
 	</div>
@@ -25,6 +25,25 @@
 
 <script>
 export default {
+	data(){
+		return{
+			user: {
+				username:'',
+				password:''
+			}
+		}
+	},
+	methods:{
+		login(){
+			this.$http.post('auth/login', this.user)
+			.then(res => {
+				if(res.status == 200){
+					this.$session.start();
+					this.$router.push('/user');
+				}
+			}).catch(console.log);
+		}
+	}
 }
 </script>
 

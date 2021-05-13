@@ -4,11 +4,16 @@
 			<router-link to="/" class="navbar-brand">BankIndra</router-link>
 		</div>
 		<ul>
-			<li><a href="">Aspirante</a></li>
-			<li><a href="">Entrevistador</a></li>
-			<li><a href="">Vacantes</a></li>
-			<router-link to="/login" tag="li"><a>Iniciar sesión</a></router-link>
-			<router-link to="/signup" tag="li"><a href="#">Registrarse</a></router-link>
+			<div v-show="this.$session.exists()">
+				<li><a href="">Aspirante</a></li>
+				<li><a href="">Entrevistador</a></li>
+				<li><a href="">Vacantes</a></li>
+				<li><a @click="logout" href="">Cerrar sesión</a></li>
+			</div>
+			<div v-show="!this.$session.exists()">
+				<router-link to="/login" tag="li"><a>Iniciar sesión</a></router-link>
+				<router-link to="/signup" tag="li"><a href="#">Registrarse</a></router-link>
+			</div>
 		</ul>
 	</nav>
 </template>
@@ -16,7 +21,15 @@
 <script>
 
 export default {
-	props:['home']
+	props:['home'],
+	methods:{
+		logout(){
+			if (this.$session.exists()) {
+				this.$session.destroy();
+				this.$router.push('/');
+			}
+		}
+	}
 }
 </script>
 

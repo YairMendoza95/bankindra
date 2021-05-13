@@ -2,6 +2,7 @@ import Vue from 'vue';
 import App from './App.vue';
 import VueRouter from 'vue-router';
 import VueResource from 'vue-resource'
+import VueSession from 'vue-session';
 import { routes } from './routes';
 
 Vue.use(VueRouter);
@@ -12,6 +13,8 @@ const router = new VueRouter({
 
 Vue.use(VueResource);
 Vue.http.options.root = "http://localhost:8888/api";
+
+Vue.use(VueSession);
 
 new Vue({
     el: '#app',

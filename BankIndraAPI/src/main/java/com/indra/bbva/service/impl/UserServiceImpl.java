@@ -4,9 +4,6 @@ import java.util.List;
 
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import com.indra.bbva.models.RoleBean;
@@ -16,7 +13,7 @@ import com.indra.bbva.repository.UserRepository;
 import com.indra.bbva.service.UserService;
 
 @Service
-public class UserServiceImpl implements UserService, UserDetailsService {
+public class UserServiceImpl implements UserService {
 	private static final Logger LOGGER = org.slf4j.LoggerFactory.getLogger(UserServiceImpl.class);
 
 	@Autowired
@@ -93,11 +90,12 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 			return false;
 		}
 	}
-
-	@Override
-	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
+	/*
+	 * @Override public UserDetails loadUserByUsername(String username) throws
+	 * UsernameNotFoundException { UserBean user =
+	 * userRepository.findUserByUsername(username); List<GrantedAuthority> roles =
+	 * new ArrayList<>(); roles.add(new SimpleGrantedAuthority("ADMIN"));
+	 * UserDetails detail = new User(user.getUsername(), user.getPassword(), roles);
+	 * return detail; }
+	 */
 }

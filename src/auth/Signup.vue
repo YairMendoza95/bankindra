@@ -13,7 +13,7 @@
 						<label for="password" class="form-label">Contraseña</label>
 					</div>
                     <div class="form-group-custom field">
-						<input type="password" id="password" name="password" class="form-control-custom" placeholder=" " v-model="password" @keyup="comparePassword">
+						<input type="password" id="pass" name="password" class="form-control-custom" placeholder=" " v-model="password" @keyup="comparePassword">
 						<label for="password" class="form-label">Confirmar ontraseña</label>
 					</div>
 					<div class="form-group">
@@ -47,6 +47,7 @@ export default {
         },
 		saveUser(){
 			this.$http.post('auth/signup',this.user).then(console.log);
+			this.$router.push('/');
 		}
     }
 }
