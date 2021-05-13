@@ -9,7 +9,7 @@ public interface UserService {
 
 	UserBean getUserByUsername(UserBean user);
 
-	boolean insertUSer(UserBean user);
+	boolean insertUser(UserBean user);
 
 	boolean updateUser(UserBean user);
 

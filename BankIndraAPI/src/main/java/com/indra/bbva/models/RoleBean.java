@@ -24,6 +24,11 @@ public class RoleBean {
 	public RoleBean() {
 	}
 
+	public RoleBean(String username, String role) {
+		this.username = username;
+		this.role = role;
+	}
+
 	public RoleBean(String username, String role, UserBean user) {
 		this.username = username;
 		this.role = role;

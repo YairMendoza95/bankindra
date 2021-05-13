@@ -12,6 +12,11 @@ export default {
 
 <style>
 footer{
-    margin:4rem auto;
+    height: 10rem;
+    width: 100%;
+}
+footer h4{
+    margin-top:7rem ;
+    vertical-align: middle;
 }
 </style>

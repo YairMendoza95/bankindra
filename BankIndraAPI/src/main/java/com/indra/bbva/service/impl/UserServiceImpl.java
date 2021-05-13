@@ -9,7 +9,9 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import com.indra.bbva.models.RoleBean;
 import com.indra.bbva.models.UserBean;
+import com.indra.bbva.repository.RoleRepository;
 import com.indra.bbva.repository.UserRepository;
 import com.indra.bbva.service.UserService;
 
@@ -19,6 +21,9 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 
 	@Autowired
 	UserRepository userRepository;
+
+	@Autowired
+	RoleRepository roleRepository;
 
 	@Override
 	public List<UserBean> getAllUsers() {
@@ -41,14 +46,15 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 	}
 
 	@Override
-	public boolean insertUSer(UserBean user) {
+	public boolean insertUser(UserBean user) {
 		try {
 			if (userRepository.existsById(user.getUsername())) {
 				LOGGER.warn("El usuario ya existe");
 				return false;
 			}
-
+			String authority = (userRepository.count() > 0) ? "ASPIRANTE" : "ADMIN";
 			userRepository.save(user);
+			roleRepository.save(new RoleBean(user.getUsername(), authority));
 			return true;
 		} catch (Exception e) {
 			// TODO: handle exception
