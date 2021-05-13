@@ -7,8 +7,8 @@
 			<li><a href="">Aspirante</a></li>
 			<li><a href="">Entrevistador</a></li>
 			<li><a href="">Vacantes</a></li>
-			<router-link to="/login"><a>Iniciar sesión</a>&nbsp; / &nbsp; </router-link>
-			<li><a href="#">Registrarse</a></li>
+			<router-link to="/login" tag="li"><a>Iniciar sesión</a></router-link>
+			<router-link to="/signup" tag="li"><a href="#">Registrarse</a></router-link>
 		</ul>
 	</nav>
 </template>

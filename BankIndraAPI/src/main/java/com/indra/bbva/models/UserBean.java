@@ -1,5 +1,7 @@
 package com.indra.bbva.models;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -8,7 +10,13 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "USERS")
-public class UserBean {
+public class UserBean implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@Column(name = "USERNAME")
 	private String username;
@@ -65,7 +73,7 @@ public class UserBean {
 
 	@Override
 	public String toString() {
-		return "UserBean [username=" + username + ", password=" + password + ", active=" + active + ", role=" + role
-				+ "]";
+		return "UserBean [username=" + username + ", password=" + password + ", active=" + active + ", role="
+				+ role.getRole() + "]";
 	}
 }

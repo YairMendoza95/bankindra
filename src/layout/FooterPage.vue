@@ -1,5 +1,5 @@
 <template> 
-    <footer class="container">
+    <footer>
         <h4 class="text-center">BankIndra</h4>
     </footer>
 </template>
@@ -14,9 +14,11 @@ export default {
 footer{
     height: 10rem;
     width: 100%;
+    background:#16324F;
+    color:#FFFFFF;
 }
 footer h4{
-    margin-top:7rem ;
+    padding:4rem 2rem;
     vertical-align: middle;
 }
 </style>
