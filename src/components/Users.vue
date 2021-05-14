@@ -1,5 +1,6 @@
 <template>
-    <div class="container">
+    <div class="container mt-4">
+        <h4>Lista de usuarios</h4>
         <ul class="list-group">
             <li class="list-group-item" v-for="user in users" :key="user">{{user.username}}</li>
         </ul>

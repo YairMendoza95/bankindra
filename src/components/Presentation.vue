@@ -8,7 +8,12 @@ import { bus } from '../main';
 export default {
     beforeCreate(){
 		bus.componentName('Presentation');
-	}
+	},
+    created(){
+        if(this.$session.exists()) {
+            this.$router.redirect('/user');
+        }
+    }
 }
 </script>
 
