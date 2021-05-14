@@ -42,7 +42,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		 * "/api/auth/signup", "/api/auth/login").permitAll().and().httpBasic();
 		 */
 		http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and().csrf().disable()
-				.authorizeRequests().anyRequest().permitAll().and().formLogin().loginProcessingUrl("/api/auth/login")
-				.and().httpBasic();
+				.authorizeRequests().anyRequest().permitAll().and().httpBasic();
 	}
 }

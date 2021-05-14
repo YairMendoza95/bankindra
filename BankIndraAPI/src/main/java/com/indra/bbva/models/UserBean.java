@@ -8,6 +8,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 @Table(name = "USERS")
 public class UserBean implements Serializable {
@@ -26,7 +28,7 @@ public class UserBean implements Serializable {
 
 	@Column(name = "ACTIVE")
 	private Integer active;
-
+	@JsonManagedReference
 	@OneToOne(mappedBy = "user")
 	private RoleBean role;
 
