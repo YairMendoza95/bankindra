@@ -1,14 +1,15 @@
 <template>
 	<div>
-		<navbar></navbar>
+		<navbar :name="name"></navbar>
 		<router-view></router-view>
 		<footer-page></footer-page>
 	</div>
 </template>
 
 <script>
-import Navbar from './layout/Navbar.vue';
-import FooterPage from './layout/FooterPage.vue'
+import Navbar from './components/layout/Navbar.vue';
+import FooterPage from './components/layout/FooterPage.vue';
+import { bus } from './main';
 
 export default {
 	components:{
@@ -17,11 +18,13 @@ export default {
 	},
 	data(){
 		return {
-			page:''
+			name:''
 		}
 	},
-	mounted(){
-
+	beforeCreate(){
+		bus.$on('componentName', name => {
+			this.name = name;
+		});
 	}
 }
 </script>

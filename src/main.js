@@ -5,6 +5,14 @@ import VueResource from 'vue-resource'
 import VueSession from 'vue-session';
 import { routes } from './routes';
 
+export const bus = new Vue({
+    methods: {
+        componentName(name) {
+            this.$emit('componentName', name);
+        }
+    }
+});
+
 Vue.use(VueRouter);
 const router = new VueRouter({
     routes: routes,

@@ -1,7 +1,9 @@
 package com.indra.bbva.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -19,6 +21,8 @@ import com.indra.bbva.service.UserService;
 @RestController
 @RequestMapping("/api/auth")
 public class AuthController {
+	private static final Logger LOGGER = org.slf4j.LoggerFactory.getLogger(AuthController.class);
+
 	@Autowired
 	UserService userService;
 	@Autowired
@@ -26,7 +30,10 @@ public class AuthController {
 
 	@GetMapping("/users")
 	public List<UserBean> getUsers() {
-		return userService.getAllUsers();
+		List<UserBean> users = new ArrayList<>();
+		userService.getAllUsers().forEach(users::add);
+		LOGGER.debug(users.toString());
+		return users;
 	}
 
 	@PostMapping("/login")

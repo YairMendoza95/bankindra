@@ -5,7 +5,6 @@ import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -35,9 +34,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 
+		/*
+		 * http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.
+		 * STATELESS).and().csrf().disable()
+		 * .authorizeRequests().antMatchers(HttpMethod.GET,
+		 * "/api/auth/users/**").authenticated() .antMatchers(HttpMethod.POST,
+		 * "/api/auth/signup", "/api/auth/login").permitAll().and().httpBasic();
+		 */
 		http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and().csrf().disable()
-				.authorizeRequests().antMatchers(HttpMethod.GET, "/api/auth/users/**").authenticated()
-				.antMatchers(HttpMethod.POST, "/api/auth/signup", "/api/auth/login").permitAll().and().httpBasic();
-
+				.authorizeRequests().anyRequest().permitAll().and().formLogin().loginProcessingUrl("/api/auth/login")
+				.and().httpBasic();
 	}
 }

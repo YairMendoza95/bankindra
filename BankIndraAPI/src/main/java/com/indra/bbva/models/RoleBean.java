@@ -70,4 +70,5 @@ public class RoleBean implements Serializable {
 	public String toString() {
 		return "RoleBean [username=" + username + ", role=" + role + "]";
 	}
+
 }

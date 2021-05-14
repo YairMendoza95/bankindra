@@ -1,6 +1,6 @@
-import HomeComponent from './Presentation.vue';
-import Login from './auth/Login.vue';
-import Signup from './auth/Signup.vue';
+import HomeComponent from './components/Presentation.vue';
+import Login from './components/auth/Login.vue';
+import Signup from './components/auth/Signup.vue';
 import User from './components/Users.vue'
 
 export const routes = [
