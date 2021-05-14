@@ -6,7 +6,7 @@
 ## Instrucciones para trabajar de forma local
 
 1. Clonar el proyecto en el equipo propio.
-2. Importar la carpeta a tu IDE Java de su preferencia. [^1].
+2. Importar la carpeta a tu IDE Java de su preferencia. [^1]
 3. Importar el proyecto completo a tu editor de código de tu preferencia.
 4. Abrir una terminal y navegar a la carpeta del proyecto.
 5. Instalar las dependencias del proyecto Vue.js.
@@ -18,4 +18,4 @@
     npm run deb
     ```
 
-[^1] Se recomienda [Spring Tool Suite 4](https://spring.io/tools)
+[^1]: Se recomienda [Spring Tool Suite 4](https://spring.io/tools)
